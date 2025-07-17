@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - TechStack Pro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <i class="fas fa-layer-group"></i>
+                    <span>TechStack Pro</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="recommendations">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-section="stacks">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Tech Stacks</span>
+                </a>
+                <a href="#" class="nav-item" data-section="history">
+                    <i class="fas fa-history"></i>
+                    <span>History</span>
+                </a>
+                <a href="#" class="nav-item" data-section="comments">
+                    <i class="fas fa-comments"></i>
+                    <span>Comments</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn btn-outline" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 id="pageTitle">Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="user-welcome">
+                        <span>Welcome back, <strong id="userDisplayName">User</strong>!</span>
+                    </div>
+                    <div class="user-avatar">
+                        <img id="userAvatar" src="/placeholder.svg?height=40&width=40" alt="User Avatar">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Recommendations Section -->
+                <section id="recommendations" class="content-section active">
+                    <div class="section-header">
+                        <h2>Get Your Tech Stack Recommendation</h2>
+                        <p>Tell us about your project and we'll recommend the perfect technology stack</p>
+                    </div>
+                    
+                    <div class="recommendation-form-card">
+                        <form id="recommendationForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="projectType">Project Type</label>
+                                    <select id="projectType" name="projectType" required>
+                                        <option value="">Select project type</option>
+                                        <option value="web-app">Web Application</option>
+                                        <option value="mobile-app">Mobile Application</option>
+                                        <option value="desktop-app">Desktop Application</option>
+                                        <option value="api">API/Backend Service</option>
+                                        <option value="ecommerce">E-commerce Platform</option>
+                                        <option value="cms">Content Management System</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="projectSize">Project Size</label>
+                                    <select id="projectSize" name="projectSize" required>
+                                        <option value="">Select project size</option>
+                                        <option value="small">Small (1-3 developers)</option>
+                                        <option value="medium">Medium (4-10 developers)</option>
+                                        <option value="large">Large (10+ developers)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="timeline">Timeline</label>
+                                    <select id="timeline" name="timeline" required>
+                                        <option value="">Select timeline</option>
+                                        <option value="1-3months">1-3 months</option>
+                                        <option value="3-6months">3-6 months</option>
+                                        <option value="6-12months">6-12 months</option>
+                                        <option value="12months+">12+ months</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="budget">Budget Range</label>
+                                    <select id="budget" name="budget" required>
+                                        <option value="">Select budget range</option>
+                                        <option value="low">Low (0 - 10k)</option>
+                                        <option value="medium">Medium (10k - 50k)</option>
+                                        <option value="high">High (50k+)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="requirements">Special Requirements</label>
+                                <textarea id="requirements" name="requirements" rows="3" placeholder="Describe any specific requirements, integrations, or constraints..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-magic"></i>
+                                Get Recommendation
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div id="recommendationResult" class="recommendation-result" style="display: none;">
+                        <!-- Recommendation results will be populated here -->
+                    </div>
+                </section>
+
+                <!-- Tech Stacks Section -->
+                <section id="stacks" class="content-section">
+                    <div class="section-header">
+                        <h2>Popular Tech Stacks</h2>
+                        <p>Explore popular technology combinations and their use cases</p>
+                    </div>
+                    
+                    <div class="stacks-grid">
+                        <div class="stack-card">
+                            <div class="stack-header">
+                                <h3>MEAN Stack</h3>
+                                <span class="stack-badge">Full Stack</span>
+                            </div>
+                            <div class="stack-technologies">
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">Express.js</span>
+                                <span class="tech-tag">Angular</span>
+                                <span class="tech-tag">Node.js</span>
+                            </div>
+                            <p>Perfect for building dynamic web applications with JavaScript across the entire stack.</p>
+                            <div class="stack-actions">
+                                <button class="btn btn-outline btn-sm" onclick="viewStackDetails('mean')">
+                                    <i class="fas fa-eye"></i> View Details
+                                </button>
+                                <button class="btn btn-primary btn-sm" onclick="downloadVideo('mean')">
+                                    <i class="fas fa-download"></i> Download Tutorial
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="stack-card">
+                            <div class="stack-header">
+                                <h3>MERN Stack</h3>
+                                <span class="stack-badge">Full Stack</span>
+                            </div>
+                            <div class="stack-technologies">
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">Express.js</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                            </div>
+                            <p>Ideal for building modern, interactive user interfaces with React and MongoDB.</p>
+                            <div class="stack-actions">
+                                <button class="btn btn-outline btn-sm" onclick="viewStackDetails('mern')">
+                                    <i class="fas fa-eye"></i> View Details
+                                </button>
+                                <button class="btn btn-primary btn-sm" onclick="downloadVideo('mern')">
+                                    <i class="fas fa-download"></i> Download Tutorial
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="stack-card">
+                            <div class="stack-header">
+                                <h3>LAMP Stack</h3>
+                                <span class="stack-badge">Web Development</span>
+                            </div>
+                            <div class="stack-technologies">
+                                <span class="tech-tag">Linux</span>
+                                <span class="tech-tag">Apache</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">PHP</span>
+                            </div>
+                            <p>Traditional and reliable stack for web development with proven stability.</p>
+                            <div class="stack-actions">
+                                <button class="btn btn-outline btn-sm" onclick="viewStackDetails('lamp')">
+                                    <i class="fas fa-eye"></i> View Details
+                                </button>
+                                <button class="btn btn-primary btn-sm" onclick="downloadVideo('lamp')">
+                                    <i class="fas fa-download"></i> Download Tutorial
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- History Section -->
+                <section id="history" class="content-section">
+                    <div class="section-header">
+                        <h2>Your Recommendation History</h2>
+                        <p>View your past recommendations and project details</p>
+                    </div>
+                    
+                    <div id="historyList" class="history-list">
+                        <!-- History items will be populated here -->
+                    </div>
+                </section>
+
+                <!-- Comments Section -->
+                <section id="comments" class="content-section">
+                    <div class="section-header">
+                        <h2>Community Feedback</h2>
+                        <p>Share your experience and read what others are saying</p>
+                    </div>
+                    
+                    <div class="comment-form-card">
+                        <form id="commentForm">
+                            <div class="form-group">
+                                <label for="commentTitle">Title</label>
+                                <input type="text" id="commentTitle" name="commentTitle" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="commentText">Your Comment</label>
+                                <textarea id="commentText" name="commentText" rows="4" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="rating">Rating</label>
+                                <div class="rating-input">
+                                    <input type="radio" id="star5" name="rating" value="5">
+                                    <label for="star5"><i class="fas fa-star"></i></label>
+                                    <input type="radio" id="star4" name="rating" value="4">
+                                    <label for="star4"><i class="fas fa-star"></i></label>
+                                    <input type="radio" id="star3" name="rating" value="3">
+                                    <label for="star3"><i class="fas fa-star"></i></label>
+                                    <input type="radio" id="star2" name="rating" value="2">
+                                    <label for="star2"><i class="fas fa-star"></i></label>
+                                    <input type="radio" id="star1" name="rating" value="1">
+                                    <label for="star1"><i class="fas fa-star"></i></label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                                Submit Comment
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div id="commentsList" class="comments-list">
+                        <!-- Comments will be populated here -->
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
